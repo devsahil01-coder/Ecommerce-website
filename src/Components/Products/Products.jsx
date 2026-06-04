@@ -11,12 +11,27 @@ function Products({ search, selectedCategory }) {
   }, []);
   console.log(products);
 
+  //  const filteredProducts = search.trim() === "" ? products: products.filter((product) =>
+  //     product.title.toLowerCase().includes(search.toLowerCase())
+  //       );
+
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.title
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const matchesCategory =
+      selectedCategory === "all" || product.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <section className="max-w-[1400px] mx-auto px-4 py-10 opacity-0 translate-y-5 animate-fadeIn">
       <h2 className="text-3xl font-bold mb-8">Featured Products</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.slice(0, 12).map((product) => (
+        {filteredProducts.slice(0, 12).map((product) => (
           <div
             key={product.id}
             className="group bg-white rounded-3xl overflow-hidden border opacity-0 translate-y-5 animate-fadeIn border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500"

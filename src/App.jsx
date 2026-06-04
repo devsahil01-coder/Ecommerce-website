@@ -11,9 +11,11 @@ import Footer from "./Components/Footer/Footer";
 import CartDrawer from "./Components/Cart/Cart";
 
 const App = () => {
-const [search, setSearch] = useState("");
-const [selectedCategory, setSelectedCategory] = useState("all");
+  const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  
 
   return (
     <div>
@@ -24,12 +26,9 @@ const [selectedCategory, setSelectedCategory] = useState("all");
         setIsCartOpen={setIsCartOpen}
       />
 
-      
       <CartDrawer isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 
-     
       <Routes>
-        
         <Route
           path="/"
           element={
@@ -49,7 +48,6 @@ const [selectedCategory, setSelectedCategory] = useState("all");
           }
         />
 
-        
         <Route
           path="/shop"
           element={
@@ -60,13 +58,10 @@ const [selectedCategory, setSelectedCategory] = useState("all");
           }
         />
 
-        
         <Route
           path="/categories"
           element={<Categories setSelectedCategory={setSelectedCategory} />}
         />
-
-    
       </Routes>
 
       <Footer />

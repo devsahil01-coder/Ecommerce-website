@@ -16,7 +16,7 @@ const categories = [
   { name: "Mens Fashion", value: "mens-shirts", icon: FaTshirt },
 ];
 
-export default function Categories() {
+export default function Categories({setSelectedCategory}) {
   return (
     <section className="max-w-[1400px] mx-auto px-4 py-12">
       <div className="text-center mb-10">
@@ -30,6 +30,7 @@ export default function Categories() {
         {categories.map((category) => (
           <div
             key={category.value}
+            onClick={() => setSelectedCategory(category.value)}
             className="flex flex-col items-center justify-center gap-4 cursor-pointer"
           >
             <span className="text-4xl text-[#059669] hover:-translate-y-1 transition-all duration-300">
